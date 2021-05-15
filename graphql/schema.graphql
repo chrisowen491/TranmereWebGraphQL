@@ -24,11 +24,18 @@ type TranmereWebCompetitions {
 type TranmereWebPlayerTable {
   id: String!
   name: String!
+  position: String!
+  picLink: String!
 }
 
 type TranmereWebStarsTable {
   id: String!
   name: String!
+  match: String!
+  date: String!
+  notes: String!
+  programme: String!
+  season: Int!
 }
 
 type TranmereWebManagers {

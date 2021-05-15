@@ -15,7 +15,6 @@ jobs:
       - name: Install AWS CDK
         run: | 
           npm install -g aws-cdk
-          npm install -g yarn
       - name: Install Dependencies & Build
         run: |
           yarn install
