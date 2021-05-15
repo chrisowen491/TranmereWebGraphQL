@@ -15,7 +15,6 @@ jobs:
           node-version: '14.x'
       - name: Install Dependencies & Build
         run: |
-          npm install -g aws-cdk
           npm install
           npm run build           
       - name: Deploy CDK
