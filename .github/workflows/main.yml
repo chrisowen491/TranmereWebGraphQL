@@ -9,14 +9,27 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: cdk deploy
-        uses: youyo/aws-cdk-github-actions@v2
+      - name: Use Node.js
+        uses: actions/setup-node@v1
         with:
-          cdk_subcommand: 'deploy'
-          cdk_stack: 'stack1'
-          cdk_args: '--require-approval never'
-          actions_comment: false
+          node-version: '14.x'
+      - name: Cache Node.js modules
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.OS }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.OS }}-node-
+            ${{ runner.OS }}-
+      - name: Install Dependencies & Build
+        run: |
+          npm install -g aws-cdk@1.103.0
+          npm install
+          npm run build           
+      - name: Deploy CDK
+        run: |
+          cdk deploy --require-approval never "*"
         env:
+          AWS_REGION: eu-west-1
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_DEFAULT_REGION: 'eu-west-1'
