@@ -13,17 +13,9 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: '14.x'
-      - name: Cache Node.js modules
-        uses: actions/cache@v2
-        with:
-          path: ~/.npm
-          key: ${{ runner.OS }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.OS }}-node-
-            ${{ runner.OS }}-
       - name: Install Dependencies & Build
         run: |
-          npm install -g aws-cdk@1.103.0
+          npm install -g aws-cdk
           npm install
           npm run build           
       - name: Deploy CDK
