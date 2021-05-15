@@ -1,0 +1,124 @@
+schema {
+  query: Query
+}
+
+type Query {
+  listTranmereWebClubs(filter: TableSimpleFilterInput, limit: Int, nextToken: String): TranmereWebClubsConnection
+  listTranmereWebCompetitions(filter: TableSimpleFilterInput, limit: Int, nextToken: String): TranmereWebCompetitionsConnection
+  listTranmereWebManagers(filter: TableSimpleFilterInput, limit: Int, nextToken: String): TranmereWebManagersConnection
+  listTranmereWebPlayerTable(filter: TableSimpleFilterInput, limit: Int, nextToken: String): TranmereWebPlayerTableConnection
+  listTranmereWebStarsTable(filter: TableSimpleFilterInput, limit: Int, nextToken: String): TranmereWebStarsTableConnection
+
+}
+
+type TranmereWebClubs {
+  id: String!
+  name: String!
+}
+
+type TranmereWebCompetitions {
+  id: String!
+  name: String!
+}
+
+type TranmereWebPlayerTable {
+  id: String!
+  name: String!
+}
+
+type TranmereWebStarsTable {
+  id: String!
+  name: String!
+}
+
+type TranmereWebManagers {
+  id: String!
+  name: String!
+  dateJoined: String!
+  dateLeft: String!
+}
+
+type TranmereWebClubsConnection {
+  items: [TranmereWebClubs]
+  nextToken: String
+}
+
+type TranmereWebCompetitionsConnection {
+  items: [TranmereWebCompetitions]
+  nextToken: String
+}
+
+type TranmereWebManagersConnection {
+  items: [TranmereWebManagers]
+  nextToken: String
+}
+
+type TranmereWebStarsTableConnection {
+  items: [TranmereWebStarsTable]
+  nextToken: String
+}
+
+type TranmereWebPlayerTableConnection {
+  items: [TranmereWebPlayerTable]
+  nextToken: String
+}
+
+input TableSimpleFilterInput {
+  id: TableStringFilterInput
+  name: TableStringFilterInput
+}
+
+input TableBooleanFilterInput {
+  eq: Boolean
+  ne: Boolean
+}
+
+input TableFloatFilterInput {
+  between: [Float]
+  contains: Float
+  eq: Float
+  ge: Float
+  gt: Float
+  le: Float
+  lt: Float
+  ne: Float
+  notContains: Float
+}
+
+input TableIDFilterInput {
+  beginsWith: ID
+  between: [ID]
+  contains: ID
+  eq: ID
+  ge: ID
+  gt: ID
+  le: ID
+  lt: ID
+  ne: ID
+  notContains: ID
+}
+
+input TableIntFilterInput {
+  between: [Int]
+  contains: Int
+  eq: Int
+  ge: Int
+  gt: Int
+  le: Int
+  lt: Int
+  ne: Int
+  notContains: Int
+}
+
+input TableStringFilterInput {
+  beginsWith: String
+  between: [String]
+  contains: String
+  eq: String
+  ge: String
+  gt: String
+  le: String
+  lt: String
+  ne: String
+  notContains: String
+}
