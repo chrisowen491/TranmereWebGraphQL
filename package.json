@@ -9,7 +9,8 @@
     "TranmereWebCompetitions",
     "TranmereWebManagers",
     "TranmereWebPlayerTable",
-    "TranmereWebStarsTable"
+    "TranmereWebStarsTable",
+    "TranmereWebHatTricks"
   ],
   "scripts": {
     "build": "tsc",
